@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed": "#d7e2ff",
+                    "surface-dim": "#dcd9d9",
+                    "on-primary-container": "#bbd0ff",
+                    "on-secondary-fixed": "#002204",
+                    "surface": "#fcf9f8",
+                    "secondary": "#1b6d24",
+                    "on-tertiary-fixed": "#331200",
+                    "inverse-surface": "#303030",
+                    "tertiary-fixed-dim": "#ffb68f",
+                    "on-tertiary-fixed-variant": "#773200",
+                    "on-primary-fixed-variant": "#004491",
+                    "inverse-primary": "#acc7ff",
+                    "tertiary-fixed": "#ffdbca",
+                    "surface-container": "#f0eded",
+                    "on-secondary-fixed-variant": "#005312",
+                    "surface-container-low": "#f6f3f2",
+                    "background": "#fcf9f8",
+                    "error-container": "#ffdad6",
+                    "on-tertiary": "#ffffff",
+                    "inverse-on-surface": "#f3f0ef",
+                    "secondary-fixed-dim": "#88d982",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-container": "#a0f399",
+                    "outline": "#727784",
+                    "surface-variant": "#e5e2e1",
+                    "on-surface-variant": "#424752",
+                    "tertiary-container": "#934000",
+                    "outline-variant": "#c2c6d4",
+                    "on-primary-fixed": "#001a40",
+                    "error": "#ba1a1a",
+                    "secondary-fixed": "#a3f69c",
+                    "on-primary": "#ffffff",
+                    "surface-tint": "#115cb9",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-container": "#217128",
+                    "surface-container-high": "#eae7e7",
+                    "surface-bright": "#fcf9f8",
+                    "on-background": "#1b1c1c",
+                    "primary-fixed-dim": "#acc7ff",
+                    "on-surface": "#1b1c1c",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-container": "#ffc2a3",
+                    "on-error": "#ffffff",
+                    "tertiary": "#6e2e00",
+                    "surface-container-highest": "#e5e2e1",
+                    "primary-container": "#0056b3",
+                    "primary": "#003f87"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Public Sans"],
+                    "body": ["Public Sans"],
+                    "label": ["Public Sans"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .bg-gradient-auth {
+        background: linear-gradient(135deg, #003f87 0%, #0056b3 100%);
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body min-h-screen">
+<!-- Top Navigation (Restricted for Onboarding) -->
+<header class="bg-surface-container-low text-primary flex justify-between items-center px-6 h-16 w-full fixed top-0 z-50">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#003f87]" data-icon="account_balance">account_balance</span>
+<h1 class="text-xl font-black text-[#003f87] tracking-tight font-headline">L'Autorité Bienveillante</h1>
+</div>
+<button class="text-slate-500 font-bold hover:bg-slate-100 transition-colors p-2 rounded-xl">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+</header>
+<main class="pt-20 pb-12 px-4 max-w-lg mx-auto">
+<!-- Progress Stepper -->
+<div class="flex justify-between items-center mb-10 px-2">
+<div class="flex flex-col items-center gap-2 flex-1">
+<div class="w-10 h-10 rounded-full flex items-center justify-center bg-primary text-on-primary font-bold shadow-lg">1</div>
+<span class="text-[10px] font-bold uppercase tracking-wider text-primary">Rôle</span>
+</div>
+<div class="h-0.5 bg-surface-container-highest flex-1 -mt-6"></div>
+<div class="flex flex-col items-center gap-2 flex-1">
+<div class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container-highest text-outline font-bold">2</div>
+<span class="text-[10px] font-bold uppercase tracking-wider text-outline">Profil</span>
+</div>
+<div class="h-0.5 bg-surface-container-highest flex-1 -mt-6"></div>
+<div class="flex flex-col items-center gap-2 flex-1">
+<div class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container-highest text-outline font-bold">3</div>
+<span class="text-[10px] font-bold uppercase tracking-wider text-outline">Validation</span>
+</div>
+</div>
+<!-- Step 1: Role Selection Content -->
+<section class="space-y-6">
+<div class="space-y-2">
+<h2 class="text-2xl font-bold font-headline text-on-surface">Bienvenue parmi nous</h2>
+<p class="text-on-surface-variant leading-relaxed">Pour commencer, veuillez sélectionner le profil qui correspond à votre activité sur le marché.</p>
+</div>
+<!-- Role Grid -->
+<div class="grid grid-cols-1 gap-4">
+<!-- Role: Vendeur (Selected State example) -->
+<button class="flex items-center p-5 bg-surface-container-lowest rounded-xl text-left border-2 border-primary ring-4 ring-primary/5 transition-all duration-150">
+<div class="w-14 h-14 rounded-full bg-primary-fixed flex items-center justify-center mr-4">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="storefront">storefront</span>
+</div>
+<div class="flex-1">
+<h3 class="text-lg font-bold text-primary">Vendeur</h3>
+<p class="text-sm text-on-surface-variant">Commerçant, artisan ou producteur local.</p>
+</div>
+<span class="material-symbols-outlined text-primary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</button>
+<!-- Role: Agent -->
+<button class="flex items-center p-5 bg-surface-container-lowest rounded-xl text-left transition-all duration-150 hover:bg-surface-container-high">
+<div class="w-14 h-14 rounded-full bg-surface-container-high flex items-center justify-center mr-4">
+<span class="material-symbols-outlined text-on-surface text-3xl" data-icon="badge">badge</span>
+</div>
+<div class="flex-1">
+<h3 class="text-lg font-bold text-on-surface">Agent de Collecte</h3>
+<p class="text-sm text-on-surface-variant">Personnel autorisé pour la perception des taxes.</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="radio_button_unchecked">radio_button_unchecked</span>
+</button>
+<!-- Role: Autorité -->
+<button class="flex items-center p-5 bg-surface-container-lowest rounded-xl text-left transition-all duration-150 hover:bg-surface-container-high">
+<div class="w-14 h-14 rounded-full bg-surface-container-high flex items-center justify-center mr-4">
+<span class="material-symbols-outlined text-on-surface text-3xl" data-icon="account_balance">account_balance</span>
+</div>
+<div class="flex-1">
+<h3 class="text-lg font-bold text-on-surface">Autorité Locale</h3>
+<p class="text-sm text-on-surface-variant">Administration et supervision du marché.</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="radio_button_unchecked">radio_button_unchecked</span>
+</button>
+</div>
+<!-- Detailed Visual Card for Identity -->
+<div class="relative overflow-hidden rounded-xl h-48 bg-slate-900 group">
+<img class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700" data-alt="vibrant outdoor marketplace in morning light with blurred vendors and colorful produce stalls" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDI_In0uHZrnzaiqQRyukOCope4j3-L5GTphFiErMDxrlfQ6ojuuxnoi_fe55utkHlYcphifzNs5pVqBcZg7PpeVOcjEiwGwnpaSLjWq2mFmO7eD_JLzn24XcVUE60llLYoUt51B79jNR3e7wq0H_6WXfhliJciG8tNs2B71yXJYszD9qPcP5OHfgSacsPcgCOESpApaLF23GMob6kbic5rI-OzsluE2JDTMeXcZOV_IdGoXD_zXP5pu0PdBV_-Znc9PNXCDtkxNXs"/>
+<div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
+<div class="absolute bottom-4 left-4 right-4">
+<p class="text-white text-sm font-medium leading-snug">Sécurisez votre activité et simplifiez vos échanges avec l'administration locale.</p>
+</div>
+</div>
+</section>
+<!-- Form Step 2 Preview (Normally hidden, shown for visual context) -->
+<section class="mt-12 space-y-6 pt-12 border-t border-outline-variant/20">
+<div class="space-y-2">
+<h2 class="text-2xl font-bold font-headline text-on-surface">Informations Personnelles</h2>
+<p class="text-on-surface-variant leading-relaxed">Complétez votre profil pour obtenir votre Badge de Confiance.</p>
+</div>
+<div class="space-y-4">
+<div class="space-y-1">
+<label class="text-[12px] font-bold text-primary uppercase ml-1">Nom complet</label>
+<input class="w-full h-14 px-4 bg-surface-container-high border-none rounded-xl focus:ring-2 focus:ring-primary text-body-lg" placeholder="Ex: Jean Dupont" type="text"/>
+</div>
+<div class="space-y-1">
+<label class="text-[12px] font-bold text-primary uppercase ml-1">Numéro de téléphone</label>
+<div class="flex gap-2">
+<div class="h-14 w-20 flex items-center justify-center bg-surface-container-high rounded-xl text-body-lg font-bold">+225</div>
+<input class="flex-1 h-14 px-4 bg-surface-container-high border-none rounded-xl focus:ring-2 focus:ring-primary text-body-lg" placeholder="00 00 00 00" type="tel"/>
+</div>
+</div>
+<div class="space-y-1">
+<label class="text-[12px] font-bold text-primary uppercase ml-1">Localisation du stand</label>
+<button class="w-full h-14 px-4 bg-surface-container-lowest border-2 border-dashed border-outline-variant rounded-xl flex items-center justify-between text-on-surface-variant">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="location_on">location_on</span>
+                            Détecter ma position
+                        </span>
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Document Upload UI -->
+<div class="p-6 bg-surface-container-low rounded-xl space-y-4">
+<h4 class="font-bold text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="upload_file">upload_file</span>
+                    Pièce d'identité (CNI / Passeport)
+                </h4>
+<div class="flex gap-4">
+<div class="flex-1 aspect-square bg-white rounded-xl flex flex-col items-center justify-center border-2 border-dashed border-outline-variant hover:border-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-outline text-3xl mb-1" data-icon="add_a_photo">add_a_photo</span>
+<span class="text-[10px] font-bold text-outline text-center px-2">RECTO</span>
+</div>
+<div class="flex-1 aspect-square bg-white rounded-xl flex flex-col items-center justify-center border-2 border-dashed border-outline-variant hover:border-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-outline text-3xl mb-1" data-icon="add_a_photo">add_a_photo</span>
+<span class="text-[10px] font-bold text-outline text-center px-2">VERSO</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Final Confirmation Component (Signature Component) -->
+<section class="mt-12 pt-12 border-t border-outline-variant/20 hidden">
+<div class="bg-secondary-container p-8 rounded-full flex flex-col items-center text-center space-y-4">
+<div class="w-20 h-20 bg-secondary rounded-full flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined text-white text-5xl" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<h2 class="text-2xl font-black text-on-secondary-container">Félicitations !</h2>
+<p class="text-on-secondary-container font-medium">Votre demande d'inscription est en cours de validation. Votre Badge de Confiance sera actif sous 24h.</p>
+</div>
+</section>
+<!-- Action Button Fixed -->
+<div class="fixed bottom-0 left-0 w-full p-4 bg-white/80 backdrop-blur-md z-40">
+<button class="w-full h-14 bg-gradient-auth text-on-primary font-bold rounded-xl shadow-lg shadow-primary/20 active:scale-95 transition-transform flex items-center justify-center gap-2">
+                Suivant
+                <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<p class="text-center text-[12px] mt-3 text-slate-500">Déjà inscrit ? <a class="text-primary font-bold" href="#">Se connecter</a></p>
+</div>
+</main>
+<!-- Bottom Nav (Suppressed per "The Destination Rule" as this is Transactional/Onboarding) -->
+<!-- The BottomNavBar is not rendered here because the user is in a focused journey. -->
+</body></html>

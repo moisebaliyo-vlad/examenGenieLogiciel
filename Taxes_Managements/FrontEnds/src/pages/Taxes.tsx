@@ -137,32 +137,34 @@ export default function Taxes() {
         <div className="space-y-4">
           {loading ? (
             <p className="text-center py-8">Chargement...</p>
-          ) : taxes.map((tax) => (
-            <div key={tax.id} className="bg-surface-container-lowest p-6 rounded-xl shadow-[0_8px_24px_rgba(27,28,28,0.04)] group">
-              <div className="flex justify-between items-start mb-4">
-                <div>
-                  <span className="inline-block px-3 py-1 bg-secondary-container text-[#217128] text-[0.75rem] font-bold rounded-full uppercase tracking-wider mb-2">Actif</span>
-                  <h3 className="text-xl font-bold">{tax.nom}</h3>
+          ) : (
+            Array.isArray(taxes) && taxes.map((tax) => (
+              <div key={tax.id} className="bg-surface-container-lowest p-6 rounded-xl shadow-[0_8px_24px_rgba(27,28,28,0.04)] group">
+                <div className="flex justify-between items-start mb-4">
+                  <div>
+                    <span className="inline-block px-3 py-1 bg-secondary-container text-[#217128] text-[0.75rem] font-bold rounded-full uppercase tracking-wider mb-2">Actif</span>
+                    <h3 className="text-xl font-bold">{tax.nom}</h3>
+                  </div>
+                  <button 
+                    onClick={() => handleOpenEdit(tax)}
+                    className="p-2 text-outline-variant hover:text-primary transition-colors"
+                  >
+                    <span className="material-symbols-outlined">edit</span>
+                  </button>
                 </div>
-                <button 
-                  onClick={() => handleOpenEdit(tax)}
-                  className="p-2 text-outline-variant hover:text-primary transition-colors"
-                >
-                  <span className="material-symbols-outlined">edit</span>
-                </button>
+                <div className="flex items-end justify-between">
+                  <div className="space-y-1">
+                    <p className="text-on-surface-variant text-sm">{tax.frequence}</p>
+                    <p className="text-on-surface-variant text-xs opacity-70">{tax.description}</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-[2.25rem] font-black leading-none text-primary">{tax.montant_base.toLocaleString()}</p>
+                    <p className="text-[0.75rem] font-bold uppercase tracking-widest text-on-surface-variant">FC</p>
+                  </div>
+                </div>
               </div>
-              <div className="flex items-end justify-between">
-                <div className="space-y-1">
-                  <p className="text-on-surface-variant text-sm">{tax.frequence}</p>
-                  <p className="text-on-surface-variant text-xs opacity-70">{tax.description}</p>
-                </div>
-                <div className="text-right">
-                  <p className="text-[2.25rem] font-black leading-none text-primary">{tax.montant_base.toLocaleString()}</p>
-                  <p className="text-[0.75rem] font-bold uppercase tracking-widest text-on-surface-variant">FC</p>
-                </div>
-              </div>
-            </div>
-          ))}
+            ))
+          )}
           {taxes.length === 0 && !loading && (
             <p className="text-center py-8 text-outline">Aucune taxe configurée.</p>
           )}

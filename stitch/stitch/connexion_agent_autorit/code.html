@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Connexion - L'Autorité Bienveillante</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed": "#d7e2ff",
+                    "surface-dim": "#dcd9d9",
+                    "on-primary-container": "#bbd0ff",
+                    "on-secondary-fixed": "#002204",
+                    "surface": "#fcf9f8",
+                    "secondary": "#1b6d24",
+                    "on-tertiary-fixed": "#331200",
+                    "inverse-surface": "#303030",
+                    "tertiary-fixed-dim": "#ffb68f",
+                    "on-tertiary-fixed-variant": "#773200",
+                    "on-primary-fixed-variant": "#004491",
+                    "inverse-primary": "#acc7ff",
+                    "tertiary-fixed": "#ffdbca",
+                    "surface-container": "#f0eded",
+                    "on-secondary-fixed-variant": "#005312",
+                    "surface-container-low": "#f6f3f2",
+                    "background": "#fcf9f8",
+                    "error-container": "#ffdad6",
+                    "on-tertiary": "#ffffff",
+                    "inverse-on-surface": "#f3f0ef",
+                    "secondary-fixed-dim": "#88d982",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-container": "#a0f399",
+                    "outline": "#727784",
+                    "surface-variant": "#e5e2e1",
+                    "on-surface-variant": "#424752",
+                    "tertiary-container": "#934000",
+                    "outline-variant": "#c2c6d4",
+                    "on-primary-fixed": "#001a40",
+                    "error": "#ba1a1a",
+                    "secondary-fixed": "#a3f69c",
+                    "on-primary": "#ffffff",
+                    "surface-tint": "#115cb9",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-container": "#217128",
+                    "surface-container-high": "#eae7e7",
+                    "surface-bright": "#fcf9f8",
+                    "on-background": "#1b1c1c",
+                    "primary-fixed-dim": "#acc7ff",
+                    "on-surface": "#1b1c1c",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-container": "#ffc2a3",
+                    "on-error": "#ffffff",
+                    "tertiary": "#6e2e00",
+                    "surface-container-highest": "#e5e2e1",
+                    "primary-container": "#0056b3",
+                    "primary": "#003f87"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Public Sans"],
+                    "body": ["Public Sans"],
+                    "label": ["Public Sans"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-login-gradient {
+            background: linear-gradient(135deg, #fcf9f8 0%, #f6f3f2 100%);
+        }
+        .btn-primary-gradient {
+            background: linear-gradient(to right, #003f87, #0056b3);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface antialiased">
+<!-- Suppression de TopAppBar et BottomNavBar selon la règle Transactionnelle/Login -->
+<main class="min-h-screen flex flex-col items-center justify-center px-6 py-12 bg-login-gradient">
+<!-- Header Institutionnel -->
+<div class="w-full max-w-md mb-12 text-center">
+<div class="inline-flex items-center justify-center p-3 mb-6 rounded-xl bg-surface-container-lowest shadow-sm">
+<span class="material-symbols-outlined text-primary text-4xl" data-icon="account_balance">account_balance</span>
+</div>
+<h1 class="text-[1.5rem] font-black tracking-tight text-primary font-headline uppercase leading-tight mb-2">
+                République Marché
+            </h1>
+<p class="text-on-surface-variant font-medium tracking-wide text-sm">
+                L'AUTORITÉ BIENVEILLANTE
+            </p>
+</div>
+<!-- Login Card -->
+<div class="w-full max-w-md">
+<div class="bg-surface-container-lowest rounded-xl p-8 shadow-[0_8px_24px_rgba(27,28,28,0.06)] overflow-hidden relative">
+<!-- Tonal Layering Accent -->
+<div class="absolute top-0 left-0 w-full h-1.5 btn-primary-gradient"></div>
+<div class="mb-8">
+<h2 class="text-xl font-bold text-on-surface mb-1">Authentification</h2>
+<p class="text-on-surface-variant text-sm">Accédez à votre espace de collecte sécurisé.</p>
+</div>
+<form class="space-y-6">
+<!-- Email/ID Field -->
+<div class="space-y-1.5">
+<label class="block text-[0.75rem] font-bold text-on-surface-variant uppercase tracking-wider px-1" for="identifier">
+                            Identifiant ou E-mail
+                        </label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline" data-icon="person">person</span>
+<input class="w-full h-[56px] pl-12 pr-4 bg-surface-container-high border-none rounded-md focus:ring-2 focus:ring-primary text-on-surface placeholder-outline-variant font-medium" id="identifier" name="identifier" placeholder="ex: agent_75001" type="text"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="space-y-1.5">
+<div class="flex justify-between items-end px-1">
+<label class="block text-[0.75rem] font-bold text-on-surface-variant uppercase tracking-wider" for="password">
+                                Mot de passe
+                            </label>
+<a class="text-[0.75rem] font-bold text-primary hover:underline" href="#">
+                                Oublié ?
+                            </a>
+</div>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline" data-icon="lock">lock</span>
+<input class="w-full h-[56px] pl-12 pr-12 bg-surface-container-high border-none rounded-md focus:ring-2 focus:ring-primary text-on-surface placeholder-outline-variant font-medium" id="password" name="password" placeholder="••••••••" type="password"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-outline hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+</button>
+</div>
+</div>
+<!-- Login Button -->
+<button class="w-full h-[56px] btn-primary-gradient text-white font-bold rounded-md flex items-center justify-center gap-3 active:scale-[0.98] transition-transform shadow-lg" type="submit">
+<span>Se connecter</span>
+<span class="material-symbols-outlined text-lg" data-icon="login">login</span>
+</button>
+</form>
+<!-- Signup/Help Footer -->
+<div class="mt-10 pt-8 border-t border-surface-container flex flex-col items-center gap-4">
+<p class="text-sm text-on-surface-variant">
+                        Pas encore de compte agent ?
+                    </p>
+<a class="inline-flex items-center gap-2 px-6 py-3 bg-surface-container-low text-primary font-bold rounded-full hover:bg-surface-variant transition-colors text-sm" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="person_add">person_add</span>
+                        Demander un accès
+                    </a>
+</div>
+</div>
+</div>
+<!-- Security Badge -->
+<div class="mt-8 flex items-center gap-3 text-outline opacity-60 grayscale hover:grayscale-0 transition-all duration-300">
+<span class="material-symbols-outlined text-xl" data-icon="verified_user">verified_user</span>
+<span class="text-[0.75rem] font-bold tracking-widest uppercase">Connexion Sécurisée AES-256</span>
+</div>
+<!-- Decorative Background Element -->
+<div class="fixed bottom-0 left-0 w-full h-1/3 -z-10 overflow-hidden opacity-20 pointer-events-none">
+<img alt="Contexte Marché" class="w-full h-full object-cover filter blur-sm" data-alt="abstract soft focus view of an outdoor european market with morning sunlight and colorful merchant stalls" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxkJ3OTO-VExRDyrBPNDuZV--ck_25l5r61nISlAH4VRqL9SRnEohlJ-IqpHKmMDqj3jUsI1Ou1BLEpFXHQoHNIAFWmcbbIJ-9sKE5tlKVVkXrPN0V5qYlzCtagmjiLwxvrdtypw2c28l9ebXg2NMP3sM5q9DWcXKRoTS5bFqQ_Q88jg2j5yi0ZyPdKIy9tkwpV2rAQ_7Q1LP5_A3lcaoKkFDKGHmXqLY3gOX4E-_NAcygXd9hxT1icJjKt2iip1dp7SDbc-UAeF8"/>
+</div>
+</main>
+<!-- Footer Links (Optional for Login) -->
+<footer class="w-full bg-surface-container-lowest py-6 px-6 text-center">
+<div class="max-w-md mx-auto flex justify-center gap-8 text-[0.65rem] font-bold text-outline uppercase tracking-widest">
+<a class="hover:text-primary" href="#">Conditions</a>
+<a class="hover:text-primary" href="#">Confidentialité</a>
+<a class="hover:text-primary" href="#">Aide</a>
+</div>
+</footer>
+</body></html>

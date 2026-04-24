@@ -17,7 +17,7 @@ export default function AppLayout() {
     }
   }, [token]);
 
-  const unreadCount = notifications.filter(n => !n.is_read).length;
+  const unreadCount = Array.isArray(notifications) ? notifications.filter(n => !n.is_read).length : 0;
 
   const handleMarkAsRead = async (id: number) => {
     if (!token) return;
@@ -49,9 +49,9 @@ export default function AppLayout() {
             {showNotifs && (
               <div className="absolute right-0 mt-2 w-72 bg-white rounded-xl shadow-2xl border border-stone-100 p-2 z-[100] max-h-96 overflow-y-auto">
                 <h4 className="px-4 py-2 font-bold text-sm border-b border-stone-50">Notifications</h4>
-                {notifications.length === 0 ? (
+                {Array.isArray(notifications) && notifications.length === 0 ? (
                   <p className="p-4 text-center text-xs text-stone-400">Aucune notification</p>
-                ) : notifications.map(n => (
+                ) : Array.isArray(notifications) && notifications.map(n => (
                   <div key={n.id} onClick={() => handleMarkAsRead(n.id)} className={`p-4 rounded-lg cursor-pointer hover:bg-stone-50 transition-colors ${!n.is_read ? 'bg-blue-50/50' : ''}`}>
                     <p className="font-bold text-xs">{n.titre}</p>
                     <p className="text-[11px] text-stone-600 mt-1">{n.message}</p>

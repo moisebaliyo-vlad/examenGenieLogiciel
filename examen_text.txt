@@ -1,0 +1,251 @@
+TRAVAIL PRATIQUE DE GENIE LOGICIEL
+TRAVAIL PRATIQUE DE GENIE LOGICIEL
+Année Académique
+Année Académique
+2025 - 2026
+2025 - 2026
+E-mail
+ : 
+info@isig.ac.cd
+
+E-mail
+ : 
+info@isig.ac.cd
+
+EXAMEN
+ GENIE LOGICIEL
+Effectué par : LE GROUPE 
+2
+EXAMEN
+ GENIE LOGICIEL
+Effectué par : LE GROUPE 
+2
+Conception
+ 
+d’une application de collecte et de suivi de la perception des t
+axe
+s
+ au sein d’un marché
+Cas du marché de Virunga
+Conception
+ 
+d’une application de collecte et de suivi de la perception des t
+axe
+s
+ au sein d’un marché
+Cas du marché de Virunga
+Enseignant: CT JOSUE ISAMUNA NKEMBO
+Enseignant
+: CT JOSUE ISAMUNA NKEMBO
+Promotion : LIC3
+Option : LIAGE
+Promotion : LIC3
+Option : LIAGE
+ISIG - GOMA
+ISIG - GOMA
+INSTITUT SUPERIEUR D’INFORMATIQUE ET DE GESTION
+BP: 841 GOMA
+http://www.isig.ac.cd
+adresse@email.zz
+INSTITUT SUPERIEUR D’INFORMATIQUE ET DE GESTION
+BP: 841 GOMA
+http://www.isig.ac.cd
+adresse@email.zz
+REPUBLIQUE DEMOCRATIQUE DU CONGO
+ENSEIGNEMENT SUPERIEUR ET UNIVERSITAIRE
+E.S.U
+REPUBLIQUE DEMOCRATIQUE DU CONGO
+ENSEIGNEMENT SUPERIEUR ET UNIVERSITAIRE
+E.S.U
+MEMBRES DU GROUPE
+ANSIMA MITIMA GASPARD
+ASIFIWE ISHAMBA YVETTE
+ASSANI AMISI JUSTIN
+AWENZE PELO ISAAC
+BAHATI AVENDUMA INNOCENT
+BAHATI MASHAGIRO DAVID
+BAJE BARIZABO MERVEILLE
+BALEKE MUHANUKA JOSEPH
+BALIYO KATANA MOISE
+BAMWIRA BAGUMA ORNELLA
+BAGUMA METRE YVES
+INTRODUCTION
+Dans le cadre de notre projet intitulé 
+« 
+la Conception d’une application de collecte et de suivi de la perception des taxes au sein d’un marché : cas du marché de 
+Virunga
+ »
+,
+ nous avons développé une solution informatique visant à améliorer la gestion et le suivi des taxes dans ce marché, en nous appuyant sur une architecture moderne et des technologies adaptées
+Le marché de Virunga est un grand marché très fréquenté où travaillent des vendeurs, des commerçants et des transporteurs. Normalement, les vendeurs doivent payer des taxes officielles aux agents de la mairie et reçoivent un ticket comme preuve.
+Parmi les taxes payées nous avons :
+Taxe de l’Etat : c’est une taxe journalière à 500fc
+Taxe pour l’Assainissement : c’est une taxe hebdomadaire à 1000fc
+Taxe pour la Patente : c’est une taxe annuelle à 35000fc
+Taxe pour la location du Stand : c’est une taxe annuelle mais qui dépend de chaque vendeur, pas de prix fixe.
+Il arrive de fois que
+ certains vendeurs paient aussi d’autres taxes non officielles, souvent sans reçu. Ces paiements sont demandés par des personnes non autorisées. Cela crée des problèmes comme le double paiement, le manque de suivi des transactions et la perte d’argent pour l’État.
+Face à ces défis, notre application vise à améliorer la transparence et le suivi de la collecte des taxes en prenant en compte les différents acteurs impliqués, tels que les vendeurs, les agents officiels, les agents informels et les autorités de gestion
+.
+1. Conception et réalisation de l’application
+1.1. Étude et modélisation du système
+Avant de commencer le développement, nous avons réalisé un diagramme de classes
+, un diagramme de cas d’utilisation, un diagramme de séquence, un diagramme d’activité et enfin un diagramme de déploiement
+. 
+Le di
+agramme de classe représente les classes ainsi que 
+leurs relations
+, celui de cas d’utilisation montre les principales fonctionnalités du projet, celui de séquence décrit une séquence de paiement, celui de déploiement montre comment l’application est déployé et aussi l’architecture utilisée et celui d’activité montre un scénario qui concerne le paiement des taxes toujours.
+Diagramme de Classe
+Diagramme de cas d’utilisation 
+Diagramme de séquence
+Diagramme de déploiement
+Diagramme d’activité
+1.2. Choix des technologies
+Pour la réalisation de notre application, nous avons utilisé plusieurs technologies adaptées :
+MySQL pour la gestion de la base de données
+FastAPI 
+un framework python pour le backend 
+spécialisé
+ dans la mise en place des API
+React pour le développement de l’interface utilisateur
+ coté Frontend
+1.3. Conception de la base de données
+Nous avons conçu une base de données avec MySQL pour stocker les informations liées aux vendeurs, aux taxes et aux paiements. Elle nous a 
+permis
+ d’assurer une bonne organisation et un suivi des données.
+1.4. Développement du backend
+Le backend de l’application a été développé avec Python en utilisant le framework FastAPI
+qui nous a aidé à mettre en place les API et aussi à exécuter des migrations vers la base des données.
+1.5. Développement du frontend
+L’interface utilisateur a été réalisée avec React.
+Js,
+ Elle permet aux utilisateurs d’interagir facilement avec le système grâce à une interface simple et dynamique
+.
+1.
+6
+ Création du dépôt GitHub
+Nous avons créer un dépôt git pour réaliser un travail collaboratif et aussi pour gérer la version de notre application et aussi pour pouvoir déployer l’application sur des serveurs distant afin que tout le monde y accède.
+1.
+6
+.
+1
+. Organisation du travail en équipe
+Voici ci-dessous les branches utilisé
+s
+1.
+6
+.
+2
+. Contributions des membres
+Liste des membres de l’équipe ayant contribué au développement du projet
+1.7
+. Revue de code (Review)
+Ce processus de revue de code permet de vérifier les modifications apportées par les membres de l’équipe avant leur intégration dans la branche principale. Le responsable analyse les changements, valide leur qualité et leur conformité, puis autorise le 
+merge
+ afin d’assurer la stabilité et la cohérence du projet.
+Voici le lien vers le repository github : 
+https://github.com/yvette-ishamba/Examen_genie_logiciel
+ 
+PRESENTATION DE L’APPLICATION AVEC LES CAPTURES D’ECRANS
+Congo Tax App
+ est une plateforme moderne et sécurisée de gestion et de suivi de la collecte des taxes de marché. Elle permet d’automatiser le processus de collecte, de surveiller la conformité fiscale des vendeurs et de générer des rapports analytiques pour la prise de décision.
+Fonctionnalités Clés
+Tableau de Bord (Dashboard)
+Une vue d’ensemble en temps réel des recettes collectées, avec des indicateurs de croissance, le nombre de vendeurs actifs et les alertes sur les impayés. 
+Gestion des Vendeurs & Matrice de Conformité
+Un système rigoureux de suivi des paiements. La matrice affiche le statut de conformité pour chaque période (Journalier, Mensuel, Annuel). - 
+EN RETARD
+ : Indique qu’un paiement manque depuis la date de création du compte. - 
+À JOUR
+ : Confirmation que toutes les taxes
+ 
+dues ont été réglées. 
+Rapports Décisionnels (Analytique)
+Des outils visuels pour l’Autorité Locale : - Distribution des recettes par marché géographique. - Taux de conformité global. - Performance des agents collecteurs (Top agents). - Répartition des flux financiers par catégorie de taxe. 
+Configuration des Taxes
+Interface intuitive pour définir les types de taxes, leurs montants de base et leurs fréquences de collecte. Supporte également les taxes “Occasionnelles” à prix libre. 
+Journal des Collectes
+Historique complet et détaillé de toutes les transactions effectuées sur le terrain, permettant une traçabilité totale des fonds. 
+Stack Technique
+Frontend : React 19, TypeScript, Tailwind CSS, Chart.js.
+Backend : FastAPI (Python), SQLAlchemy (ORM).
+Base de données : MySQL.
+Sécurité : Authentification OAuth2 avec JWT, Hachage des mots de passe avec Bcrypt.
+Installation & Configuration
+Prérequis
+ :
+Python 3.10+
+Node.js 18+
+Serveur MySQL
+Configuration du Backend
+Accédez au dossier backend : 
+cd Backend
+Créez un environnement virtuel : 
+python -m venv venv
+Activez l’environnement : 
+venv\Scripts\activate
+ (Windows) ou 
+source venv/bin/activate
+ (Linux/Mac)
+Installez les dépendances : 
+pip install -r requirements.txt
+Configurez le fichier 
+.env
+ avec vos accès MySQL :
+DATABASE_URL
+ 
+= 
+mysql+pymysql://user:password@localhost:3306/taxe_app_db
+SECRET_KEY=votre_cle_secrete_ici
+Exécutez les migrations pour initialiser la base de données : 
+python app/migrations/migrate_v2.py
+Lancez le serveur : 
+uvicorn app.main:app --reload
+ 
+Configuration du Frontend
+Accédez au dossier frontend : 
+cd FrontEnds
+Installez les dépendances : 
+npm install
+Lancez l’application en mode développement : 
+npm run dev
+Architecture du Projet
+├── Backend/
+│   ├── app/
+│   │   ├── models/      # Modèles de données SQLAlchemy
+│   │   ├── routes/      # Endpoints de l'API (FastAPI)
+│   │   ├── schemas/     # Schémas Pydantic (Validation)
+│   │   └── migrations/  # Scripts de migration de la base de données
+│   └── main.py          # Point d'entrée de l'application
+├── FrontEnds/
+│   ├── src/
+│   │   ├── components/  # Composants UI réutilisables
+│   │   ├── pages/       # Vues principales (Dashboard, Vendeurs, etc.)
+│   │   ├── services/    # Appels API
+│   │   └── store/       # Gestion d'état (Redux Toolkit)
+│   └── index.html
+└── screenshots/         # Captures d'écran pour la documentation
+Rôles et Autorisations
+Le système utilise un contrôle d’accès basé sur les rôles (RBAC) :
+Autorité Locale (Administrateur)
+ : Accès complet aux rapports décisionnels, validation des nouveaux membres, gestion des taxes et surveillance globale.
+Agent de Collecte
+ : Enregistrement des paiements sur le terrain, consultation de l’historique des collectes.
+Processus de paiement
+ : Sélection de la taxe et saisie du montant. 
+Confirmation
+ : Validation instantanée de la transaction. 
+Vendeur
+ : Accès personnel pour consulter son statut de conformité et télécharger ses reçus de paiement.
+Historique & Reçus
+ : Suivi détaillé de toutes les taxes payées. 
+Signalements
+ : Possibilité de rapporter des problèmes directement depuis l’interface. 
+Utilisation
+L’application est optimisée pour une utilisation sur desktop (pour l’administration) et sur mobile (pour les agents de collecte sur le terrain). Les interfaces sont entièrement responsive pour garantir une expérience utilisateur fluide sur tous les supports.
+Licence
+Ce projet est réalisé dans le cadre de l’Examen de Génie Logiciel.
+CONCLUSION
+Ce projet portant sur la conception d’une application de collecte et de suivi de la perception des taxes au sein du marché de Virunga nous a permis de mettre en pratique plusieurs connaissances acquises durant notre travail. Il nous a également offert une meilleure compréhension du fonctionnement réel de la collecte des taxes dans un environnement complexe et souvent informel.
+Grâce à l’utilisation de technologies modernes telles que MySQL, Python, FastAPI et React, nous avons pu concevoir une application fonctionnelle répondant aux besoins identifiés. L’analyse du système, la modélisation à travers le diagramme de classes ainsi que l’organisation du travail via GitHub ont contribué à structurer efficacement le développement du projet.

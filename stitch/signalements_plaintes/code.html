@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#ffdbca",
+                        "surface": "#fcf9f8",
+                        "tertiary-fixed-dim": "#ffb68f",
+                        "surface-dim": "#dcd9d9",
+                        "background": "#fcf9f8",
+                        "surface-bright": "#fcf9f8",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-primary": "#acc7ff",
+                        "secondary": "#1b6d24",
+                        "on-background": "#1b1c1c",
+                        "secondary-fixed": "#a3f69c",
+                        "surface-tint": "#115cb9",
+                        "on-tertiary-fixed": "#331200",
+                        "surface-container-highest": "#e5e2e1",
+                        "on-secondary-container": "#217128",
+                        "on-secondary-fixed-variant": "#005312",
+                        "on-surface-variant": "#424752",
+                        "on-error-container": "#93000a",
+                        "inverse-surface": "#303030",
+                        "surface-container-low": "#f6f3f2",
+                        "surface-container-high": "#eae7e7",
+                        "tertiary": "#6e2e00",
+                        "on-primary-container": "#bbd0ff",
+                        "primary-fixed-dim": "#acc7ff",
+                        "on-secondary": "#ffffff",
+                        "outline-variant": "#c2c6d4",
+                        "on-primary": "#ffffff",
+                        "tertiary-container": "#934000",
+                        "primary-container": "#0056b3",
+                        "error-container": "#ffdad6",
+                        "surface-container": "#f0eded",
+                        "secondary-fixed-dim": "#88d982",
+                        "secondary-container": "#a0f399",
+                        "primary-fixed": "#d7e2ff",
+                        "on-surface": "#1b1c1c",
+                        "on-tertiary-fixed-variant": "#773200",
+                        "on-error": "#ffffff",
+                        "surface-variant": "#e5e2e1",
+                        "on-secondary-fixed": "#002204",
+                        "primary": "#003f87",
+                        "outline": "#727784",
+                        "on-tertiary-container": "#ffc2a3",
+                        "on-primary-fixed-variant": "#004491",
+                        "inverse-on-surface": "#f3f0ef",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed": "#001a40"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Public Sans"],
+                        "body": ["Public Sans"],
+                        "label": ["Public Sans"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Public Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen pb-32">
+<header class="bg-white dark:bg-stone-900 flex justify-between items-center px-6 py-4 w-full sticky top-0 z-50">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#003f87] dark:text-[#4d91ff] text-2xl">account_balance</span>
+<h1 class="text-[#003f87] dark:text-[#4d91ff] font-['Public_Sans'] font-bold text-xl tracking-tight">L'Autorité Bienveillante</h1>
+</div>
+<div class="relative">
+<img alt="Profil Agent" class="w-10 h-10 rounded-full border-2 border-primary-fixed" data-alt="close-up portrait of a professional African government official in a clean white shirt, soft natural office lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTPblp9GFND855VS8BpZS7YxPiqHx7SnBQPWka4mmNfHJJvwUg1dFpaM7N_9ZTW3Q01Vjvoszh1D5Uakxb4mrNK2GfuIy9mjuLGwq8aqIy6caiYgZmJvDfHjNrcivZFg1idsu0CctytctClTN8rAdEIniJ14GWycY2s233HKNrhpM0DqwE_CkCLThiIYEACqf3O-vQyqVC5Myf1q_iPmrKa8hrOfHPErgaScnrR3pB5JNjq6fhX1YKePcSx8ZKOiiQCbr6emb9HUo"/>
+<span class="absolute -top-1 -right-1 bg-error w-4 h-4 rounded-full border-2 border-white flex items-center justify-center text-[10px] text-white font-bold">2</span>
+</div>
+</header>
+<main class="px-4 py-6 space-y-8 max-w-md mx-auto">
+<section>
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-2xl font-extrabold text-primary tracking-tight">Nouveau Signalement</h2>
+<span class="bg-tertiary-container text-on-tertiary-fixed-variant px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Alerte Éthique</span>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0_8px_24px_rgba(27,28,28,0.04)] space-y-5">
+<div>
+<label class="block text-[10px] font-bold uppercase tracking-widest text-outline mb-1">Type d'abus</label>
+<div class="relative">
+<select class="w-full bg-surface-container-high border-none rounded-lg h-14 px-4 font-medium text-on-surface focus:ring-2 focus:ring-primary appearance-none">
+<option>Extorsion / Frais illégaux</option>
+<option>Harcèlement</option>
+<option>Abus de pouvoir</option>
+<option>Non-délivrance de quittance</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-4 text-outline pointer-events-none">expand_more</span>
+</div>
+</div>
+<div>
+<label class="block text-[10px] font-bold uppercase tracking-widest text-outline mb-1">Nom de l'agent concerné</label>
+<div class="relative">
+<input class="w-full bg-surface-container-high border-none rounded-lg h-14 px-4 font-medium text-on-surface placeholder:text-outline-variant focus:ring-2 focus:ring-primary" placeholder="Entrez le nom ou matricule" type="text"/>
+<span class="material-symbols-outlined absolute right-4 top-4 text-outline">badge</span>
+</div>
+</div>
+<div>
+<label class="block text-[10px] font-bold uppercase tracking-widest text-outline mb-1">Description des faits</label>
+<textarea class="w-full bg-surface-container-high border-none rounded-lg p-4 font-medium text-on-surface placeholder:text-outline-variant focus:ring-2 focus:ring-primary" placeholder="Détaillez l'incident avec précision (date, heure, lieu)..." rows="4"></textarea>
+</div>
+<button class="w-full bg-primary text-on-primary h-14 rounded-lg font-bold text-lg flex items-center justify-center gap-2 hover:bg-primary-container transition-all active:scale-95 shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">send</span>
+                    Soumettre le signalement
+                </button>
+</div>
+</section>
+<section class="space-y-4">
+<div class="flex items-center justify-between">
+<h2 class="text-xl font-bold text-on-surface">Historique des plaintes</h2>
+<button class="text-primary font-bold text-sm flex items-center gap-1">
+                    Filtrer
+                    <span class="material-symbols-outlined text-lg">filter_list</span>
+</button>
+</div>
+<div class="space-y-4">
+<div class="bg-surface-container-lowest p-5 rounded-xl border-l-4 border-tertiary shadow-sm">
+<div class="flex justify-between items-start mb-2">
+<div class="flex flex-col">
+<span class="text-xs font-bold text-tertiary uppercase tracking-tighter">REF: #SIG-8842</span>
+<h3 class="font-bold text-lg leading-tight">Demande de pot-de-vin</h3>
+</div>
+<span class="bg-tertiary-fixed text-on-tertiary-fixed-variant px-3 py-1 rounded-full text-[10px] font-black uppercase">En cours</span>
+</div>
+<p class="text-on-surface-variant text-sm mb-4 line-clamp-2">L'agent au marché central a tenté de doubler la taxe journalière sans fournir de reçu officiel...</p>
+<div class="flex items-center justify-between pt-3 border-t border-surface-container">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">chat</span>
+<span class="text-xs font-bold text-primary">Nouveau message de l'autorité</span>
+</div>
+<span class="text-outline text-[10px] font-medium">Il y a 2h</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-5 rounded-xl border-l-4 border-secondary opacity-80">
+<div class="flex justify-between items-start mb-2">
+<div class="flex flex-col">
+<span class="text-xs font-bold text-outline uppercase tracking-tighter">REF: #SIG-8711</span>
+<h3 class="font-bold text-lg text-on-surface-variant">Comportement agressif</h3>
+</div>
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-[10px] font-black uppercase">Résolu</span>
+</div>
+<p class="text-on-surface-variant text-sm mb-4">L'incident du 12 Octobre a été traité. Des mesures disciplinaires ont été prises à l'encontre de l'agent.</p>
+<div class="flex items-center justify-between pt-3 border-t border-outline-variant/20">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-sm">verified</span>
+<span class="text-xs font-bold text-secondary">Dossier classé</span>
+</div>
+<span class="text-outline text-[10px] font-medium">14 Oct. 2023</span>
+</div>
+</div>
+</div>
+</section>
+<section class="bg-[#003f87] rounded-2xl p-6 relative overflow-hidden text-white shadow-xl">
+<div class="relative z-10">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-secondary-fixed">security</span>
+<h4 class="font-bold tracking-tight">Confidentialité Garantie</h4>
+</div>
+<p class="text-blue-100 text-sm leading-relaxed">Vos signalements sont anonymisés et traités directement par la brigade d'inspection centrale pour votre protection.</p>
+</div>
+<div class="absolute -right-8 -bottom-8 opacity-10">
+<span class="material-symbols-outlined text-9xl">gavel</span>
+</div>
+</section>
+</main>
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-2 bg-white/85 dark:bg-stone-900/85 backdrop-blur-xl z-50 rounded-t-xl shadow-[0_-8px_24px_rgba(27,28,28,0.06)] border-t border-stone-200/20 dark:border-stone-700/20">
+<a class="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 p-2 hover:text-[#003f87] transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-['Public_Sans'] text-[10px] font-bold uppercase tracking-widest mt-1">Tableau</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 p-2 hover:text-[#003f87] transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-['Public_Sans'] text-[10px] font-bold uppercase tracking-widest mt-1">Collecte</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 p-2 hover:text-[#003f87] transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-['Public_Sans'] text-[10px] font-bold uppercase tracking-widest mt-1">Vendeurs</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 p-2 hover:text-[#003f87] transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined">settings_suggest</span>
+<span class="font-['Public_Sans'] text-[10px] font-bold uppercase tracking-widest mt-1">Taxes</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#003f87] text-white rounded-xl p-3 transform -translate-y-1 transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined">report_problem</span>
+<span class="font-['Public_Sans'] text-[10px] font-bold uppercase tracking-widest mt-1">Signalements</span>
+</a>
+</nav>
+</body></html>

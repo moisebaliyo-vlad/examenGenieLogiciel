@@ -75,55 +75,59 @@ export default function AdminUsers() {
       <div className="space-y-4">
         {loading ? (
           <p className="text-center py-8">Chargement...</p>
-        ) : activeTab === 'agents' ? users.map((u) => (
-          <div key={u.id} className="bg-surface-container-lowest p-5 rounded-2xl shadow-sm border border-outline-variant/10 flex justify-between items-center">
-            <div className="flex items-center gap-4">
-              <div className={`w-12 h-12 rounded-xl flex items-center justify-center font-bold ${u.is_admin ? 'bg-primary-fixed text-primary' : 'bg-secondary-container text-secondary'}`}>
-                {u.full_name ? u.full_name[0] : u.email[0]}
+        ) : activeTab === 'agents' ? (
+          Array.isArray(users) && users.map((u) => (
+            <div key={u.id} className="bg-surface-container-lowest p-5 rounded-2xl shadow-sm border border-outline-variant/10 flex justify-between items-center">
+              <div className="flex items-center gap-4">
+                <div className={`w-12 h-12 rounded-xl flex items-center justify-center font-bold ${u.is_admin ? 'bg-primary-fixed text-primary' : 'bg-secondary-container text-secondary'}`}>
+                  {u.full_name ? u.full_name[0] : u.email[0]}
+                </div>
+                <div>
+                  <p className="font-bold">{u.full_name || 'Sans nom'}</p>
+                  <p className="text-xs text-outline">{u.email}</p>
+                  <span className={`text-[10px] font-black uppercase px-2 py-0.5 rounded-full ${u.is_active ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
+                    {u.is_active ? 'Actif' : 'En attente'}
+                  </span>
+                </div>
               </div>
-              <div>
-                <p className="font-bold">{u.full_name || 'Sans nom'}</p>
-                <p className="text-xs text-outline">{u.email}</p>
-                <span className={`text-[10px] font-black uppercase px-2 py-0.5 rounded-full ${u.is_active ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
-                  {u.is_active ? 'Actif' : 'En attente'}
-                </span>
-              </div>
+              {u.id !== currentUser.id && (
+                <button 
+                  onClick={() => toggleUserStatus(u)}
+                  className={`p-2 rounded-lg transition-colors ${u.is_active ? 'text-red-500 hover:bg-red-50' : 'text-green-500 hover:bg-green-50'}`}
+                >
+                  <span className="material-symbols-outlined">
+                    {u.is_active ? 'person_off' : 'person_check'}
+                  </span>
+                </button>
+              )}
             </div>
-            {u.id !== currentUser.id && (
+          ))
+        ) : (
+          Array.isArray(vendeurs) && vendeurs.map((v) => (
+            <div key={v.id} className="bg-surface-container-lowest p-5 rounded-2xl shadow-sm border border-outline-variant/10 flex justify-between items-center">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-xl bg-tertiary-container text-tertiary flex items-center justify-center font-bold">
+                  {v.nom[0]}
+                </div>
+                <div>
+                  <p className="font-bold">{v.prenom} {v.nom}</p>
+                  <p className="text-xs text-outline">ID: {v.identifiant_national}</p>
+                  <span className={`text-[10px] font-black uppercase px-2 py-0.5 rounded-full ${v.is_active ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
+                    {v.is_active ? 'Actif' : 'En attente'}
+                  </span>
+                </div>
+              </div>
               <button 
-                onClick={() => toggleUserStatus(u)}
-                className={`p-2 rounded-lg transition-colors ${u.is_active ? 'text-red-500 hover:bg-red-50' : 'text-green-500 hover:bg-green-50'}`}
-              >
-                <span className="material-symbols-outlined">
-                  {u.is_active ? 'person_off' : 'person_check'}
-                </span>
-              </button>
-            )}
-          </div>
-        )) : vendeurs.map((v) => (
-          <div key={v.id} className="bg-surface-container-lowest p-5 rounded-2xl shadow-sm border border-outline-variant/10 flex justify-between items-center">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xl bg-tertiary-container text-tertiary flex items-center justify-center font-bold">
-                {v.nom[0]}
-              </div>
-              <div>
-                <p className="font-bold">{v.prenom} {v.nom}</p>
-                <p className="text-xs text-outline">ID: {v.identifiant_national}</p>
-                <span className={`text-[10px] font-black uppercase px-2 py-0.5 rounded-full ${v.is_active ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
-                  {v.is_active ? 'Actif' : 'En attente'}
-                </span>
-              </div>
+                  onClick={() => toggleVendeurStatus(v)}
+                  className={`p-2 rounded-lg transition-colors ${v.is_active ? 'text-red-500 hover:bg-red-50' : 'text-green-500 hover:bg-green-50'}`}
+                >
+                  <span className="material-symbols-outlined">
+                    {v.is_active ? 'block' : 'check_circle'}
+                  </span>
+                </button>
             </div>
-            <button 
-                onClick={() => toggleVendeurStatus(v)}
-                className={`p-2 rounded-lg transition-colors ${v.is_active ? 'text-red-500 hover:bg-red-50' : 'text-green-500 hover:bg-green-50'}`}
-              >
-                <span className="material-symbols-outlined">
-                  {v.is_active ? 'block' : 'check_circle'}
-                </span>
-              </button>
-          </div>
-        ))}
+          ))
+        )}
       </div>
     </div>
   );

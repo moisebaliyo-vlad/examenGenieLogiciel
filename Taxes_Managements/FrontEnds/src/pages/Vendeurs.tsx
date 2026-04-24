@@ -47,7 +47,7 @@ export default function Vendeurs() {
       <div className="px-4 py-6 space-y-6">
         <h1 className="font-bold text-2xl text-primary px-2">Base des Vendeurs</h1>
         <div className="grid grid-cols-1 gap-3">
-          {vendeurs.map((v) => (
+          {Array.isArray(vendeurs) && vendeurs.map((v) => (
             <div 
               key={v.id} 
               onClick={() => setSelectedVendeur(v)}
@@ -133,7 +133,7 @@ export default function Vendeurs() {
         <div className="space-y-3">
           {loading ? (
             <p className="text-center py-8 text-outline">Chargement de l'historique...</p>
-          ) : history.map((p) => (
+          ) : Array.isArray(history) && history.map((p) => (
             <div key={p.id} className="bg-surface-container-lowest p-5 rounded-xl flex items-center justify-between border-l-4 border-secondary shadow-sm">
               <div className="flex items-center gap-4">
                 <div className="bg-secondary-container/30 w-10 h-10 rounded-full flex items-center justify-center">
