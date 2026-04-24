@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import ProtectedRoute from './components/ProtectedRoute';
 import Login from './pages/Login';
 import Onboarding from './pages/Onboarding';
 import ResetPassword from './pages/ResetPassword';
@@ -8,6 +9,8 @@ import Collecte from './pages/Collecte';
 import Vendeurs from './pages/Vendeurs';
 import Taxes from './pages/Taxes';
 import Signalements from './pages/Signalements';
+import Profile from './pages/Profile';
+import AdminUsers from './pages/AdminUsers';
 
 function App() {
   return (
@@ -19,12 +22,25 @@ function App() {
         <Route path="/reset-password" element={<ResetPassword />} />
 
         {/* Protected/Dashboard Routes */}
-        <Route element={<AppLayout />}>
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/collecte" element={<Collecte />} />
-          <Route path="/vendeurs" element={<Vendeurs />} />
-          <Route path="/taxes" element={<Taxes />} />
-          <Route path="/signalements" element={<Signalements />} />
+        <Route element={<ProtectedRoute />}>
+          <Route element={<AppLayout />}>
+            <Route element={<ProtectedRoute allowedRoles={['admin']} />}>
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/taxes" element={<Taxes />} />
+              <Route path="/admin/users" element={<AdminUsers />} />
+            </Route>
+            
+            <Route element={<ProtectedRoute allowedRoles={['admin', 'agent']} />}>
+              <Route path="/collecte" element={<Collecte />} />
+            </Route>
+            
+            <Route element={<ProtectedRoute allowedRoles={['admin', 'vendeur']} />}>
+              <Route path="/vendeurs" element={<Vendeurs />} />
+              <Route path="/signalements" element={<Signalements />} />
+            </Route>
+            
+            <Route path="/profile" element={<Profile />} />
+          </Route>
         </Route>
 
         {/* Redirects */}

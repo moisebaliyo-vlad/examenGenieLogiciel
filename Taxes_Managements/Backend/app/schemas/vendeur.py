@@ -13,6 +13,13 @@ class VendeurBase(BaseModel):
 class VendeurCreate(VendeurBase):
     pass
 
+class VendeurUpdate(BaseModel):
+    nom: Optional[str] = None
+    prenom: Optional[str] = None
+    telephone: Optional[str] = None
+    emplacement: Optional[str] = None
+    is_active: Optional[bool] = None
+
 class VendeurOut(VendeurBase):
     id: int
     created_at: datetime

@@ -10,6 +10,12 @@ class TaxeBase(BaseModel):
 class TaxeCreate(TaxeBase):
     pass
 
+class TaxeUpdate(BaseModel):
+    nom: Optional[str] = None
+    montant_base: Optional[float] = None
+    frequence: Optional[str] = None
+    description: Optional[str] = None
+
 class TaxeOut(TaxeBase):
     id: int
 

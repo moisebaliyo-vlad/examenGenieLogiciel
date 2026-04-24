@@ -11,19 +11,17 @@ SECRET_KEY = os.getenv("SECRET_KEY", "secret_key_default")
 ALGORITHM = os.getenv("ALGORITHM", "HS256")
 ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", "30"))
 
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
-
-import passlib.exc
+import bcrypt
 
 def verify_password(plain_password, hashed_password):
     try:
-        return pwd_context.verify(plain_password, hashed_password)
-    except passlib.exc.UnknownHashError:
+        return bcrypt.checkpw(plain_password.encode('utf-8'), hashed_password.encode('utf-8'))
+    except Exception:
         # Happens if you insert plaintext pass "123" directly in SQLite
         return False
 
 def get_password_hash(password):
-    return pwd_context.hash(password)
+    return bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
 
 def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
     to_encode = data.copy()

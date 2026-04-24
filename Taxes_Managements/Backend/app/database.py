@@ -4,7 +4,8 @@ from sqlalchemy.orm import sessionmaker, declarative_base
 from dotenv import load_dotenv
 
 load_dotenv()
-DATABASE_URL = "mysql+pymysql://root:Lesoutils%401907@localhost:3306/taxe_app_db"
+# Default to 3308 (MariaDB/WAMP). Change to 3306 in .env if needed.
+DATABASE_URL = "mysql+pymysql://root:@localhost:3308/taxe_app_db"
 
 SQLALCHEMY_DATABASE_URL = os.getenv("DATABASE_URL", DATABASE_URL)
 

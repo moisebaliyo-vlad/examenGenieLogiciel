@@ -1,4 +1,4 @@
-
+import React, { useEffect, useState } from 'react';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -9,6 +9,9 @@ import {
   Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
+import { statsApi } from '../services/api';
+import { useNavigate } from 'react-router-dom';
+import { useAppSelector } from '../store/hooks';
 
 ChartJS.register(
   CategoryScale,
@@ -20,12 +23,33 @@ ChartJS.register(
 );
 
 export default function Dashboard() {
+  const [stats, setStats] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+  const { user: currentUser } = useAppSelector((state) => state.auth);
+
+  useEffect(() => {
+    const fetchStats = async () => {
+      try {
+        const data = await statsApi.getDashboard();
+        setStats(data);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchStats();
+  }, []);
+
+  if (loading) return <div className="p-8 text-center">Chargement...</div>;
+
   const chartData = {
-    labels: ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'],
+    labels: stats?.chart_data?.map((d: any) => d.day) || [],
     datasets: [
       {
-        label: 'Recettes (FCFA)',
-        data: [12000, 20000, 24000, 16000, 28000, 18000, 26000],
+        label: 'Recettes (FC)',
+        data: stats?.chart_data?.map((d: any) => d.amount) || [],
         backgroundColor: '#003f87',
         borderRadius: 8,
         borderSkipped: false,
@@ -76,11 +100,11 @@ export default function Dashboard() {
             <span className="material-symbols-outlined text-white/50 animate-pulse">trending_up</span>
           </div>
           <div className="flex items-baseline gap-2">
-            <span className="text-[2.25rem] font-black leading-tight tracking-tight">45 000</span>
-            <span className="text-xl font-bold opacity-80">FCFA</span>
+            <span className="text-[2.25rem] font-black leading-tight tracking-tight">{stats?.total_today?.toLocaleString() || 0}</span>
+            <span className="text-xl font-bold opacity-80">FC</span>
           </div>
           <div className="mt-4 flex items-center gap-2 bg-white/10 w-fit px-3 py-1.5 rounded-full backdrop-blur-sm border border-white/5">
-            <span className="text-[10px] font-bold">+12% par rapport à hier</span>
+            <span className="text-[10px] font-bold">Mis à jour en temps réel</span>
           </div>
         </div>
 
@@ -88,13 +112,23 @@ export default function Dashboard() {
         <div className="bg-surface-container-lowest p-5 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-md transition-shadow">
           <span className="material-symbols-outlined text-primary mb-2 text-2xl">groups</span>
           <p className="text-on-surface-variant text-[10px] font-bold uppercase mb-1 tracking-wider">Vendeurs actifs</p>
-          <p className="text-2xl font-black text-primary">128</p>
+          <p className="text-2xl font-black text-primary">{stats?.active_vendors || 0}</p>
         </div>
         <div className="bg-surface-container-lowest p-5 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-md transition-shadow">
           <span className="material-symbols-outlined text-secondary mb-2 text-2xl">engineering</span>
           <p className="text-on-surface-variant text-[10px] font-bold uppercase mb-1 tracking-wider">Agents terrain</p>
-          <p className="text-2xl font-black text-secondary">14</p>
+          <p className="text-2xl font-black text-secondary">{stats?.field_agents || 0}</p>
         </div>
+        {currentUser?.is_admin && (
+          <div 
+            onClick={() => navigate('/admin/users')}
+            className="bg-primary-container/20 p-5 rounded-2xl border border-primary/20 shadow-sm hover:shadow-md transition-all cursor-pointer group"
+          >
+            <span className="material-symbols-outlined text-primary mb-2 text-2xl group-hover:scale-110 transition-transform">manage_accounts</span>
+            <p className="text-primary text-[10px] font-bold uppercase mb-1 tracking-wider">Système</p>
+            <p className="text-xl font-black text-primary">Comptes</p>
+          </div>
+        )}
       </section>
       
 
@@ -120,7 +154,7 @@ export default function Dashboard() {
           </div>
           <div className="flex-1">
             <p className="font-bold text-on-tertiary-fixed-variant">Vendeurs Impayés</p>
-            <p className="text-sm text-on-tertiary-fixed-variant/70">8 dossiers critiques à traiter</p>
+            <p className="text-sm text-on-tertiary-fixed-variant/70">Analyse de conformité requise</p>
           </div>
           <span className="material-symbols-outlined text-tertiary">chevron_right</span>
         </div>
@@ -132,9 +166,9 @@ export default function Dashboard() {
           </div>
           <div className="flex-1">
             <p className="font-bold">Signalements en attente</p>
-            <p className="text-sm text-on-surface-variant">3 nouveaux incidents signalés</p>
+            <p className="text-sm text-on-surface-variant">{stats?.pending_signals || 0} incidents à traiter</p>
           </div>
-          <div className="bg-error text-white text-[10px] font-black px-2 py-1 rounded-full animate-pulse">NOUVEAU</div>
+          {stats?.pending_signals > 0 && <div className="bg-error text-white text-[10px] font-black px-2 py-1 rounded-full animate-pulse">NOUVEAU</div>}
         </div>
       </div>
 
@@ -142,8 +176,18 @@ export default function Dashboard() {
       <section className="pb-8">
         <h3 className="font-bold text-lg mb-4 px-1">Dernières Collectes</h3>
         <div className="space-y-3">
-          <ActivityItem name="Mamadou Konaté" location="Marché Central" time="Il y a 5 min" amount="2 500" />
-          <ActivityItem name="Safiétou Diallo" location="Zone Artisanale" time="Il y a 12 min" amount="5 000" />
+          {stats?.recent_activities?.map((activity: any) => (
+            <ActivityItem 
+              key={activity.id}
+              name={activity.vendeur_name} 
+              location={activity.taxe_nom} 
+              time={new Date(activity.date).toLocaleTimeString()} 
+              amount={activity.montant.toLocaleString()} 
+            />
+          ))}
+          {(!stats?.recent_activities || stats.recent_activities.length === 0) && (
+            <p className="text-center text-on-surface-variant text-sm py-4">Aucune activité récente</p>
+          )}
         </div>
       </section>
 
@@ -159,7 +203,7 @@ function ActivityItem({ name, location, time, amount }: { name: string; location
         <p className="text-xs text-on-surface-variant">{location} • {time}</p>
       </div>
       <div className="text-right">
-        <p className="font-black text-secondary">{amount} FCFA</p>
+        <p className="font-black text-secondary">{amount} FC</p>
         <span className="text-[10px] font-bold bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded-full uppercase tracking-tighter">PAYÉ</span>
       </div>
     </div>

@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { Landmark, User, Lock, Eye, LogIn, UserPlus, ShieldCheck } from 'lucide-react';
+import { Landmark, User, Lock, Eye, LogIn, UserPlus, ShieldCheck, Briefcase, Store } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
-import { loginUser, clearError } from '../store/slices/authSlice';
+import { loginUser, loginVendeur, clearError } from '../store/slices/authSlice';
 import { usersApi } from '../services/api';
 import { ArrowLeft } from 'lucide-react';
 import Button from '../components/Button';
@@ -10,8 +10,10 @@ import Button from '../components/Button';
 export default function Login() {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const [activeTab, setActiveTab] = useState<'agent' | 'vendeur'>('agent');
   const [identifier, setIdentifier] = useState('');
   const [password, setPassword] = useState('');
+  const [identifiantNational, setIdentifiantNational] = useState('');
   
   const { loading, error } = useAppSelector((state) => state.auth);
 
@@ -25,10 +27,16 @@ export default function Login() {
     dispatch(clearError());
     
     try {
-      const resultAction = await dispatch(loginUser({ identifier, password }));
-      if (loginUser.fulfilled.match(resultAction)) {
-        console.log('Connexion réussie', resultAction.payload);
-        navigate('/dashboard');
+      if (activeTab === 'agent') {
+        const resultAction = await dispatch(loginUser({ identifier, password }));
+        if (loginUser.fulfilled.match(resultAction)) {
+          navigate('/dashboard');
+        }
+      } else {
+        const resultAction = await dispatch(loginVendeur(identifiantNational));
+        if (loginVendeur.fulfilled.match(resultAction)) {
+          navigate('/vendeurs');
+        }
       }
     } catch (err: any) {
       console.error(err);
@@ -79,62 +87,101 @@ export default function Login() {
           <div className="p-8 sm:p-10 md:p-12 xl:p-14 2xl:p-16 3xl:p-20">
             {!showResetForm ? (
               <>
+                <div className="flex bg-slate-100 p-1 rounded-xl mb-8">
+                  <button
+                    onClick={() => { setActiveTab('agent'); dispatch(clearError()); }}
+                    className={`flex-1 flex justify-center items-center py-2.5 text-[0.8rem] font-bold rounded-lg transition-all ${activeTab === 'agent' ? 'bg-white text-[#0047a5] shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}
+                  >
+                    <Briefcase className="w-4 h-4 mr-2" />
+                    Agent / Admin
+                  </button>
+                  <button
+                    onClick={() => { setActiveTab('vendeur'); dispatch(clearError()); }}
+                    className={`flex-1 flex justify-center items-center py-2.5 text-[0.8rem] font-bold rounded-lg transition-all ${activeTab === 'vendeur' ? 'bg-white text-[#0047a5] shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}
+                  >
+                    <Store className="w-4 h-4 mr-2" />
+                    Vendeur
+                  </button>
+                </div>
+
                 <h2 className="text-xl md:text-2xl xl:text-3xl font-bold text-slate-800 mb-1">
                   Authentification
                 </h2>
                 <p className="text-sm text-slate-500 mb-8">
-                  Accédez à votre espace de collecte sécurisé.
+                  {activeTab === 'agent' ? 'Accédez à votre espace de gestion.' : 'Accédez à votre espace personnel vendeur.'}
                 </p>
 
                 <form className="space-y-5" onSubmit={handleLogin}>
-                  <div className="space-y-1.5">
-                    <label className="block text-[0.7rem] font-bold text-slate-700 uppercase tracking-wide">
-                      Entrez votre mail
-                    </label>
-                    <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
-                        <User className="h-4 w-4 text-slate-400" />
+                  {activeTab === 'agent' ? (
+                    <>
+                      <div className="space-y-1.5">
+                        <label className="block text-[0.7rem] font-bold text-slate-700 uppercase tracking-wide">
+                          Entrez votre mail
+                        </label>
+                        <div className="relative">
+                          <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+                            <User className="h-4 w-4 text-slate-400" />
+                          </div>
+                          <input
+                            type="text"
+                            placeholder="ex: admin@taxe.app"
+                            className="block w-full pl-10 pr-3 py-3 bg-[#f1f5f9] border border-transparent rounded-lg text-sm text-slate-800 focus:bg-white focus:border-[#0047a5] focus:ring-1 focus:ring-[#0047a5] transition-colors outline-none placeholder-slate-400 font-medium"
+                            value={identifier}
+                            onChange={(e) => setIdentifier(e.target.value)}
+                          />
+                        </div>
                       </div>
-                      <input
-                        type="text"
-                        placeholder="ex: agent_75001"
-                        className="block w-full pl-10 pr-3 py-3 bg-[#f1f5f9] border border-transparent rounded-lg text-sm text-slate-800 focus:bg-white focus:border-[#0047a5] focus:ring-1 focus:ring-[#0047a5] transition-colors outline-none placeholder-slate-400 font-medium"
-                        value={identifier}
-                        onChange={(e) => setIdentifier(e.target.value)}
-                      />
-                    </div>
-                  </div>
 
-                  {/* Input: Mot de passe */}
-                  <div className="space-y-1.5">
-                    <div className="flex justify-between items-center">
+                      {/* Input: Mot de passe */}
+                      <div className="space-y-1.5">
+                        <div className="flex justify-between items-center">
+                          <label className="block text-[0.7rem] font-bold text-slate-700 uppercase tracking-wide">
+                            Mot de passe
+                          </label>
+                          <button 
+                            type="button"
+                            onClick={() => setShowResetForm(true)}
+                            className="text-[0.75rem] font-bold text-[#0047a5] hover:underline"
+                          >
+                            Oublié ?
+                          </button>
+                        </div>
+                        <div className="relative">
+                          <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+                            <Lock className="h-4 w-4 text-slate-400" />
+                          </div>
+                          <input
+                            type="password"
+                            placeholder="••••••••"
+                            className="block w-full pl-10 pr-10 py-3 bg-[#f1f5f9] border border-transparent rounded-lg text-sm text-slate-800 focus:bg-white focus:border-[#0047a5] focus:ring-1 focus:ring-[#0047a5] transition-colors outline-none placeholder-slate-400 font-medium tracking-widest"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                          />
+                          <div className="absolute inset-y-0 right-0 pr-3.5 flex items-center cursor-pointer hover:bg-slate-200 rounded-r-lg px-1">
+                            <Eye className="h-4 w-4 text-slate-500" />
+                          </div>
+                        </div>
+                      </div>
+                    </>
+                  ) : (
+                    <div className="space-y-1.5">
                       <label className="block text-[0.7rem] font-bold text-slate-700 uppercase tracking-wide">
-                        Mot de passe
+                        Identifiant National
                       </label>
-                      <button 
-                        type="button"
-                        onClick={() => setShowResetForm(true)}
-                        className="text-[0.75rem] font-bold text-[#0047a5] hover:underline"
-                      >
-                        Oublié ?
-                      </button>
-                    </div>
-                    <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
-                        <Lock className="h-4 w-4 text-slate-400" />
-                      </div>
-                      <input
-                        type="password"
-                        placeholder="••••••••"
-                        className="block w-full pl-10 pr-10 py-3 bg-[#f1f5f9] border border-transparent rounded-lg text-sm text-slate-800 focus:bg-white focus:border-[#0047a5] focus:ring-1 focus:ring-[#0047a5] transition-colors outline-none placeholder-slate-400 font-medium tracking-widest"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                      />
-                      <div className="absolute inset-y-0 right-0 pr-3.5 flex items-center cursor-pointer hover:bg-slate-200 rounded-r-lg px-1">
-                        <Eye className="h-4 w-4 text-slate-500" />
+                      <div className="relative">
+                        <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+                          <User className="h-4 w-4 text-slate-400" />
+                        </div>
+                        <input
+                          type="text"
+                          placeholder="ex: IRFFSRE"
+                          className="block w-full pl-10 pr-3 py-3 bg-[#f1f5f9] border border-transparent rounded-lg text-sm text-slate-800 focus:bg-white focus:border-[#0047a5] focus:ring-1 focus:ring-[#0047a5] transition-colors outline-none placeholder-slate-400 font-medium"
+                          value={identifiantNational}
+                          onChange={(e) => setIdentifiantNational(e.target.value)}
+                        />
                       </div>
                     </div>
-                  </div>
+                  )}
 
                   {/* Submit Button */}
                   <div className="pt-2">
